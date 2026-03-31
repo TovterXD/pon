@@ -5,33 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .pon {
-            color: green;
-            text-align: center;
-        }
+
+    
         body{
             background: #F0FFFF;
         }
-        .text{
-            font-size: 20px;
+
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
         }
         
     </style>
 </head>
 <body>
-    <div>
-        <span class="pon"><h1>Обо мне крутом программисте</h1></span>
-        <img src="https://masterpiecer-images.s3.yandex.net/0502cd0eaa7511eea1df562fd35b1dbd:upscaled" width="300" height="300">
-        <div class="text">
-            <p>На этой фотке я, там видно, как я круто программирую</p>
-            <p>Я крутой фронтенд разработчик, изучаю: javascript, php, html</p>
-            <p>Мой стаж программирования состовляет 6 лет</p>
-            <p>Интересоваться программированием начал еще с начальных классов</p>
-            <p>После колледжа планирую идти работать по своей специальности</p>
-        </div>
-        <a href="https://microhirurg.stgmu.ru/">
-        <button>Мой сайт</button>
-        </a>
+    <header>
+        <nav>
+            <button data-target="tab1">Обо мне</button>
+            <button data-target="tab2">Еще не придумал</button>
+            <button data-target="tab3">Потом придумаю</button>
+        </nav>
+    </header>
+
+    <div class="tabs-container">
+
+       <div id="tab1" class="tab active">
+            <h1>Пенисы</h1>
+       </div>
+
+
+       <div id="tab2" class="tab">
+            <h2>Хуй</h2>
+       </div> 
+
     </div>
+
+        <div id="tab3" class="tab">
+            <h2>аморальные пенисы</h2>
+       </div>
+
+
+
+    <script>
+        document.querySelectorAll('button[data-target]').forEach(button => {
+            button.addEventListener('click', event => {
+                document.querySelectorAll('.tab').forEach(tab => {
+                    console.log([tab.id, button])
+                    tab.classList.toggle('active', tab.id == button.dataset.target)
+                })
+            })
+        })
+    </script>
 </body>
 </html>
