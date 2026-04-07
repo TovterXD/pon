@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
-    
-        body{
+        body {
             background: #485050;
         }
 
@@ -18,66 +17,106 @@
         .tab.active {
             display: block;
         }
+
         .text {
             color: white;
         }
+
         .pon {
             color: white;
         }
+
         h2 {
             color: white;
         }
-        nav button{
+
+        nav button {
             font-size: 30px;
             padding: 8px 12px;
             border-radius: 10px;
             background-color: #909f9f;
             color: white;
         }
+
         .btn {
             padding: 8px 13px;
             border-radius: 5px;
         }
-        
+
+        .tab.active {
+            text-align: center;
+        }
+
+        .small-img {
+            width: 150px;
+            cursor: pointer;
+            transition: all 0.8s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .big-img {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) rotate(360deg) scale(1) !important;
+            width: 90vw !important;
+            height: auto;
+            z-index: 1000;
+        }
+   
     </style>
 </head>
+
 <body>
     <header>
         <nav>
-            <button data-target="tab1" >Обо мне</button>
-            <button data-target="tab2" >Учебное заведение</button>
-            <button data-target="tab3" >Потом придумаю</button>
+            <button data-target="tab1">Обо мне</button>
+            <button data-target="tab2">Учебное заведение</button>
+            <button data-target="tab3">Потом придумаю</button>
         </nav>
     </header>
 
     <div class="tabs-container">
 
-       <div id="tab1" class="tab active">
-           
-        <span class="pon"><h1>Обо мне крутом программисте</h1></span>
-        <img src="https://masterpiecer-images.s3.yandex.net/0502cd0eaa7511eea1df562fd35b1dbd:upscaled" width="300" height="300">
+        <div id="tab1" class="tab active">
+
+            <span class="pon">
+                <h1>Обо мне крутом программисте</h1>
+            </span>
+            <img src="https://masterpiecer-images.s3.yandex.net/0502cd0eaa7511eea1df562fd35b1dbd:upscaled" width="300"
+                height="300">
             <div class="text">
                 <p>На этой фотке я, там видно, как я круто программирую</p>
                 <p>Я крутой фронтенд разработчик, изучаю: javascript, php, html</p>
                 <p>Мой стаж программирования состовляет 6 лет</p>
                 <p>Интересоваться программированием начал еще с начальных классов</p>
-                <p>После колледжа планирую идти работать по своей специальности</p> </div>
-        
-       </div>
+                <p>После колледжа планирую идти работать по своей специальности</p>
+            </div>
+
+        </div>
 
 
-       <div id="tab2" class="tab">
+        <div id="tab2" class="tab">
             <h2>Обучаюсь в крутом элитном колледже информационных технологий IThub</h2>
-       </div> 
+        </div>
 
     </div>
 
-        <div id="tab3" class="tab">
-            <h2>Нажми на кнопку ле</h2>
-           
-                <button id="changeBgBtn" class="btn">Мемчик🤣😂😂😁🤣🤣🤣</button>
-            
-       </div>
+    <div id="tab3" class="tab">
+        <h2>Нажми на кнопку ле</h2>
+
+        <button id="changeBgBtn" class="btn">Мемчик🤣😂😂😁🤣🤣🤣</button>
+
+        <button id="zoomBtn" class="btn">Улётная шуточка</button>
+        <div class="image-container">
+            <img src="https://images.meme-arsenal.com/6fbfcb4796e392ac53e7dfa00c0270d6.jpg" id="targetImg" class="small-img" alt="Фото">
+        </div>
+
+
+       
+
+    </div>
 
 
 
@@ -91,13 +130,26 @@
             })
         })
 
-        document.getElementById('changeBgBtn').addEventListener('click', function() {
-        document.body.style.backgroundImage = "url('pupupu.png')";
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundAttachment = "fixed";
-        document.body.style.backgroundPosition = "center";
+        document.getElementById('changeBgBtn').addEventListener('click', function () {
+            document.body.style.backgroundImage = "url('pupupu.png')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundAttachment = "fixed";
+            document.body.style.backgroundPosition = "center";
         })
+
+        const button = document.getElementById('zoomBtn');
+        const image = document.getElementById('targetImg');
+
+        button.addEventListener('click', () => {
+            image.classList.toggle('big-img');
+        });
+
+        image.addEventListener('click', () => {
+            image.classList.remove('big-img');
+        });
+             
     </script>
 </body>
+
 </html>
